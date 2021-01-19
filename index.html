@@ -10,27 +10,54 @@
       let selection = options[Math.floor(Math.random() * 3)]
       return selection;
     }
-    function playRound(playerSelection, computerSelection) {
+
+
+    function game() {
+      let playerScore = 0;
+      let computerScore = 0;
+
+      function playRound(playerSelection, computerSelection) {
       if (playerSelection.toUpperCase() === computerSelection) {
         return 'It\'s a draw! Play another round.'
       } else if (playerSelection.toUpperCase() === 'ROCK' && computerSelection === 'PAPER') {
-        return 'You lose! Paper beats rock.'
+        computerScore++;
+        return 'Computer wins! Paper beats rock.'
       } else if (playerSelection.toUpperCase() === 'ROCK' && computerSelection === 'SCISSORS') {
-        return 'You win! Rock beats scissors.'
+        playerScore++;
+        return 'Player wins! Rock beats scissors.'
       } else if (playerSelection.toUpperCase() === 'PAPER' && computerSelection === 'ROCK') {
-        return 'You win! Paper beats rock.'
+        playerScore++;
+        return 'Player wins! Paper beats rock.'
       } else if (playerSelection.toUpperCase() === 'PAPER' && computerSelection === 'SCISSORS') {
-        return 'You lose! Scissors beats paper.'
+        computerScore++;
+        return 'Computer wins! Scissors beats paper.'
       } else if (playerSelection.toUpperCase() === 'SCISSORS' && computerSelection === 'ROCK') {
-        return 'You lose! Scissors beats rock.'
+        computerScore++;
+        return 'Computer wins! Scissors beats rock.'
       } else if (playerSelection.toUpperCase() === 'SCISSORS' && computerSelection === 'PAPER') {
-        return 'You win! Scissors beats paper.'
+        playerScore++;
+        return 'Player wins! Scissors beats paper.'
       }
     }
 
-    let playerChoice = "rock";
-    let computerChoice = computerPlay();
-    playRound(playerChoice, computerChoice);
+      for (let i = 1; i <= 5; i++) {
+        let playerOption = prompt('Enter rock or paper or scissors: ')
+        let computerOption = computerPlay();
+        playRound(playerOption, computerOption);
+        console.log(`The current score is - Player:${playerScore} and Computer:${computerScore}.`)
+      }
+
+      if (playerScore > computerScore) {
+        console.log('Congratulations, you beat the computer!')
+      } else if (playerScore < computerScore) {
+        console.log('Ooof, you just got beat by the computer. Better luck next time!')
+      } else {
+        console.log('How interesting, a tie game! Nicely done.')
+      }
+
+    }
+
+    game();
     </script>
   </body>
 </html>
