@@ -33,12 +33,31 @@ function game() {
   }
 }
 
-  for (let i = 1; i <= 5; i++) {
-    let playerOption = prompt('Enter rock or paper or scissors: ')
-    let computerOption = computerPlay();
-    playRound(playerOption, computerOption);
-    console.log(`The current score is - Player:${playerScore} and Computer:${computerScore}.`)
-  }
+  // for (let i = 1; i <= 5; i++) {
+  //   let playerOption = prompt('Enter rock or paper or scissors: ')
+  //   let computerOption = computerPlay();
+  //   playRound(playerOption, computerOption);
+  //   console.log(`The current score is - Player:${playerScore} and Computer:${computerScore}.`)
+  // }
+
+  const rockButton = document.querySelector('#rock');
+  rockButton.addEventListener('click', () => {
+    alert('you picked rock!')
+  })
+
+  const paperButton = document.querySelector('#paper');
+  paperButton.addEventListener('click', () => {
+    alert('you picked paper!')
+  })
+
+  const scissorsButton = document.querySelector('#scissors');
+  scissorsButton.addEventListener('click', () => {
+    alert('you picked scissors!')
+  })
+
+  // when a button is clicked, play a round
+  // display running score
+  // when someone reaches five points, declare a winner
 
   if (playerScore > computerScore) {
     console.log('Congratulations, you beat the computer!')
